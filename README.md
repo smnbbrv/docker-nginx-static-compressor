@@ -1,6 +1,6 @@
-# smnbbrv/nginx-static-compressor
+# nginx-static-compressor
 
-CI Docker image for precompressing files for NGINX. Plays well with https://github.com/fholzer/docker-nginx-brotli
+CI Docker image for precompressing files for nginx. Plays well with [fholzer/docker-nginx-brotli](https://github.com/fholzer/docker-nginx-brotli)
 
 Requires enabling 
 
@@ -8,6 +8,23 @@ Requires enabling
     gzip_static on;
     
 on the final nginx configuration.
+
+## Running
+
+```sh
+compress dist
+```
+
+## CI confiruation
+
+Gitlab CI config:
+
+```yml
+lint:
+  image: smnbbrv/nginx-static-compressor
+  stage: postbuild
+  script: compress dist
+```
 
 ## Example nginx config
 
@@ -26,3 +43,7 @@ server {
   ...
 }
 ```
+
+## Credits
+
+This docker image internally uses https://www.npmjs.com/package/bread-compressor-cli.
