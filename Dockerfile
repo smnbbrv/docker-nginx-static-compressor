@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:10-alpine
 
 ADD compress.sh /usr/bin/compress
 
